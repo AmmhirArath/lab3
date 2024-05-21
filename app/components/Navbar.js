@@ -1,9 +1,18 @@
-
+import React, { useContext, useState } from 'react';
 import Link from "next/link";
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import PersonIcon from '@mui/icons-material/Person';
+import { CartContext } from "./CartContext";
+import ArticulosCarrito from './CartArticle';
 
-const Navbar = ({ cartItemCount }) => {
+const Navbar = () => {
+  const { cart } = useContext(CartContext);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const toggleCart = () => {
+    setIsCartOpen(!isCartOpen);
+  };
+
   return (
     <nav className="bg-gray-800 p-4">
       <div className="container mx-auto flex justify-between items-center">
@@ -34,15 +43,16 @@ const Navbar = ({ cartItemCount }) => {
           </Link>
         </div>
         <div className="flex items-center">
-          <Link href="/carrito" className="text-white font-bold">
-            <LocalGroceryStoreIcon/>
-            <span>{cartItemCount}</span>
-          </Link>
+          <button onClick={toggleCart} className="text-white font-bold">
+            <LocalGroceryStoreIcon />
+            <span>{cart.length}</span> {/* Mostrar la cantidad de artículos en el carrito */}
+          </button>
           <Link href="/" className="text-white font-bold text-xl ml-4">
-            <PersonIcon/>
+            <PersonIcon />
           </Link>
         </div>
       </div>
+      <ArticulosCarrito isCartOpen={isCartOpen} toggleCart={toggleCart} />
     </nav>
   );
 };

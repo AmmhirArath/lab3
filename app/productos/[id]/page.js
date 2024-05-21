@@ -1,22 +1,23 @@
 'use client'
 import Navbar from "../../components/Navbar";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { CartContext } from "@/app/components/CartContext";
 
 const productos = [
   {
     id: 1,
-    name: "Alimento ERA Seco",
+    name: "Alimento PREMIUM Seco",
     description: "Alimento seco para perros",
-    price: 39.99,
+    price: 10.99,
     image:
       "https://melopetandgarden.com/cdn/shop/files/ERA100418_1.jpg?v=1699885519",
   },
   { 
     id: 2,
-    name: "Alimento ERA Seco",
+    name: "Alimento VERBAE Seco",
     description: "Alimento seco para perros",
-    price: 39.99,
+    price: 29.99,
     image:
       "https://melopetandgarden.com/cdn/shop/files/ERA100418_1.jpg?v=1699885519",
   },
@@ -31,10 +32,7 @@ const productos = [
 ];
 
 const ProductDetail = ({ params }) => {
-  const [cartItemCount, setCartItemCount] = useState(0);
-  const addToCart = () => {
-    setCartItemCount(prevCount => prevCount + 1);
-  };
+  const { addToCart } = useContext(CartContext);
 
   const id = params.id;
   const product = productos.find((p) => p.id === parseInt(id));
@@ -45,7 +43,7 @@ const ProductDetail = ({ params }) => {
 
   return (
     <div className="bg-gray-100 min-h-screen">
-      <Navbar cartItemCount={cartItemCount} />
+      <Navbar />
       <main className="container mx-auto p-4">
         <div className="mt-4">
           <Link href="/" className="text-blue-500 hover:underline">
@@ -65,7 +63,7 @@ const ProductDetail = ({ params }) => {
             <h1 className="text-3xl font-bold">{product.name}</h1>
             <p className="text-gray-700 mt-4">{product.description}</p>
             <p className="text-green-600 font-bold text-2xl mt-4">{`$${product.price}`}</p>
-            <button className="bg-blue-500 text-white p-2 rounded mt-4" onClick={addToCart}>
+            <button className="bg-blue-500 text-white p-2 rounded mt-4" onClick={() => addToCart(product)}>
               Añadir al Carrito
             </button>
           </div>

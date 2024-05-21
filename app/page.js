@@ -6,24 +6,27 @@ import ProductCard from "./components/ProductCard";
 const productos = [
   {
     id: 1,
-    name: "Alimento ERA Seco",
+    name: "Alimento PREMIUM Seco",
     description: "Alimento seco para perros",
-    price: 39.99,
-    image: "https://melopetandgarden.com/cdn/shop/files/ERA100418_1.jpg?v=1699885519",
+    price: 10.99,
+    image:
+      "https://melopetandgarden.com/cdn/shop/files/ERA100418_1.jpg?v=1699885519",
   },
-  {
+  { 
     id: 2,
-    name: "Alimento ERA Seco",
+    name: "Alimento VERBAE Seco",
     description: "Alimento seco para perros",
-    price: 39.99,
-    image: "https://melopetandgarden.com/cdn/shop/files/ERA100418_1.jpg?v=1699885519",
+    price: 29.99,
+    image:
+      "https://melopetandgarden.com/cdn/shop/files/ERA100418_1.jpg?v=1699885519",
   },
   {
     id: 3,
     name: "Alimento ERA Seco",
     description: "Alimento seco para perros",
     price: 39.99,
-    image: "https://melopetandgarden.com/cdn/shop/files/ERA100418_1.jpg?v=1699885519",
+    image:
+      "https://melopetandgarden.com/cdn/shop/files/ERA100418_1.jpg?v=1699885519",
   },
 ];
 

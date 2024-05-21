@@ -1,8 +1,22 @@
-import {create} from "zustand";
+'use client'
+import React, { createContext, useState } from 'react';
 
-const useCartStore = create((set) => ({
-  cartItemCount: 0,
-  addToCart: () => set((state) => ({ cartItemCount: state.cartItemCount + 1 })),
-}));
+export const CartContext = createContext();
 
-export default useCartStore;
+export const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+  };
+
+  const removeFromCart = (productId) => {
+    setCart(cart.filter(item => item.id !== productId));
+  };
+
+  return (
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+      {children}
+    </CartContext.Provider>
+  );
+};
