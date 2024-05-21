@@ -24,19 +24,19 @@ const Navbar = () => {
         </Link>
         <div className="space-x-4">
           <Link
-            href="/productos"
+            href="/"
             className="text-white transform hover:scale-105 transition-transform duration-300 ease-in-out"
           >
             ALIMENTOS
           </Link>
           <Link
-            href="/carrito"
+            href="/"
             className="text-white transform hover:scale-105 transition-transform duration-300 ease-in-out"
           >
             MEDICAMENTOS
           </Link>
           <Link
-            href="/contacto"
+            href="/"
             className="text-white transform hover:scale-105 transition-transform duration-300 ease-in-out"
           >
             ACCESORIOS
